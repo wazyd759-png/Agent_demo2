@@ -61,6 +61,12 @@ BANNED = {
     "REVOKE", "EXEC", "EXECUTE",
 }
 
+MUTATION_INTENT = (
+    "删除", "删掉", "更新", "修改", "更改", "改成", "设置", "写入", "插入",
+    "新增", "创建", "清空", "移除", "drop", "delete", "update", "insert",
+    "alter", "create", "replace", "truncate", "vacuum", "attach", "detach",
+)
+
 
 def clean_sql(text: str) -> str:
     """去掉 ```sql 围栏、结尾分号、首尾空白"""
@@ -85,12 +91,22 @@ def is_safe(sql: str):
     return True, ""
 
 
+def has_mutation_intent(question: str):
+    normalized = (question or "").lower()
+    return any(keyword in normalized for keyword in MUTATION_INTENT)
+
+
 # ---------- 核心：提问 → 查库 → 回答 ----------
 def ask_agent(question: str) -> str:
     logger.info("开始处理请求，用户问题：%s", question)
     conn = init_db()
 
     try:
+        if has_mutation_intent(question):
+            reason = "检测到数据修改意图，只允许执行只读 SELECT 查询"
+            logger.warning("用户请求安全校验失败，原因：%s，问题：%s", reason, question)
+            return f"拒绝执行：{reason}"
+
         # 1. 生成 SQL
         sql_prompt = (
             f"你是一个 SQLite 专家。表结构：{SCHEMA}\n"
