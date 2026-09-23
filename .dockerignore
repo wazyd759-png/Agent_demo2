@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.gitignore
+chroma_db1/
+.cache/
+*.log
+.pytest_cache/
+.ipynb_checkpoints/
