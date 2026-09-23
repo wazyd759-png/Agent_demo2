@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "hit_rate": 1.0,
+    "faithfulness": 1.0,
+    "avg_elapsed_s": 1.46,
+    "source_rate": 1.0
+  },
+  "details": [
+    {
+      "question": "GPT5.6系列产品如何被推出的",
+      "answer": "GPT-5.6系列产品是通过OpenAI的持续技术演进和生态布局推出的，包括构建能力连续体、更新API与微调平台、推出合规沙盒模式等，同时在核心基准测试中实现性能突破，并结合“测试时训练”等新技术，推进“AI即操作系统”的愿景。",
+      "sources_count": 3,
+      "hit": true,
+      "faithful": null,
+      "elapsed_s": 1.72
+    },
+    {
+      "question": "GPT5.6是怎么发布上线的",
+      "answer": "根据提供的上下文信息，未提及GPT-5.6的具体发布上线方式或时间。",
+      "sources_count": 3,
+      "hit": true,
+      "faithful": null,
+      "elapsed_s": 1.2
+    },
+    {
+      "question": "GPT5.6有哪些版本",
+      "answer": "GPT-5.6系列包含三个版本：Luna、Terra和Sol。",
+      "sources_count": 3,
+      "hit": true,
+      "faithful": null,
+      "elapsed_s": 1.27
+    },
+    {
+      "question": "GPT5.6的推出背景和目标",
+      "answer": "GPT-5.6的推出背景是OpenAI旨在巩固其在AI领域的生态霸主地位，通过构建能力连续体，提供从Luna到Sol的多层次模型服务，降低迁移成本并增强用户粘性。其目标是成为“全能型选手”，实现从底层芯片适配到上层应用框架的垂直整合，强化在生成式AI领域的统治地位。",
+      "sources_count": 3,
+      "hit": true,
+      "faithful": null,
+      "elapsed_s": 1.78
+    },
+    {
+      "question": "GPT-5.6 Sol 在哪些基准测试里破纪录",
+      "answer": "GPT-5.6 Sol在以下基准测试中破纪录：  \n- HumanEval++编码评测（通过率98.2%）  \n- 蛋白质折叠与基因编辑模拟（预测准确率接近实验室湿实验水平）  \n- 网络安全渗透测试基准CyberSec-Eval 4（漏洞发现速率与修复建议可用性得分）。",
+      "sources_count": 3,
+      "hit": true,
+      "faithful": null,
+      "elapsed_s": 1.78
+    },
+    {
+      "question": "OpenAI 的定价策略是什么",
+      "answer": "OpenAI的定价策略为：Sol的输入Token价格为每百万5美元，输出Token价格为每百万30美元。Terra与Luna的定价分别为Sol的60%和30%。",
+      "sources_count": 3,
+      "hit": true,
+      "faithful": null,
+      "elapsed_s": 1.39
+    },
+    {
+      "question": "测试时训练是什么",
+      "answer": "测试时训练（Test-Time Training）是一种在模型推理过程中根据当前上下文动态调整少量内部参数的机制，使模型能够在未见过的任务上实现即场适应。",
+      "sources_count": 3,
+      "hit": true,
+      "faithful": null,
+      "elapsed_s": 1.37
+    },
+    {
+      "question": "今天天气怎么样",
+      "answer": "今天天气的情况不在提供的上下文中，因此无法回答。",
+      "sources_count": 3,
+      "hit": null,
+      "faithful": true,
+      "elapsed_s": 1.2
+    }
+  ]
+}
