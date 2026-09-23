@@ -1,7 +1,16 @@
-langchain-community>=0.3.0
-langchain-text-splitters>=0.3.0
-langchain-chroma>=0.2.0
-langchain-core>=0.3.0
-dashscope>=1.15.0
-chromadb>=0.5.0
-python-dotenv>=1.0.0
+# requirements.txt
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain-chroma
+chromadb
+dashscope
+sentence-transformers
+python-dotenv
+# 将 torch 版本升级，例如 2.5.1 或更高
+torch==2.5.1

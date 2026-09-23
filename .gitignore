@@ -5,12 +5,13 @@
 __pycache__/
 *.pyc
 *.pyo
+.pytest_cache/
 
 # 向量数据库
 chroma_db1/
 chroma_db/
 
-# IDE 编辑器配置
+# IDE
 .vscode/
 .idea/
 *.swp
@@ -20,6 +21,10 @@ venv/
 env/
 .venv/
 
-# 操作系统垃圾文件
+# 操作系统
 .DS_Store
 Thumbs.db
+
+# 日志和缓存
+*.log
+.cache/
