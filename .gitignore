@@ -1,30 +1,20 @@
-# 环境变量
-.env
-
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
-.pytest_cache/
-
-# 向量数据库
-chroma_db1/
-chroma_db/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-
-# 虚拟环境
+*.pyd
 venv/
-env/
 .venv/
 
-# 操作系统
+# Environment
+.env
+.env.*
+!.env.example
+
+# Database and logs
+orders.db
+*.log
+
+# OS/editor
 .DS_Store
 Thumbs.db
-
-# 日志和缓存
-*.log
-.cache/

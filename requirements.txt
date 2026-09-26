@@ -1,16 +1,6 @@
-# requirements.txt
-fastapi
-uvicorn[standard]
-pydantic
-python-multipart
-langchain
-langchain-core
-langchain-community
-langchain-text-splitters
-langchain-chroma
-chromadb
-dashscope
-sentence-transformers
-python-dotenv
-# 将 torch 版本升级，例如 2.5.1 或更高
-torch==2.5.1
+dashscope==1.27.6
+langchain-classic==1.0.8
+langchain-community==0.4.2
+langchain-core==1.6.3
+langchain-protocol==0.0.19
+langchain-text-splitters==1.1.2
