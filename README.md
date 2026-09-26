@@ -62,3 +62,54 @@ http://121.40.172.119/
 ```bash
 cd /opt/rag-app
 docker build -t my-rag-app .
+
+## 启动容器
+docker run -d \
+  --name rag-app \
+  --restart unless-stopped \
+  -p 127.0.0.1:8000:8000 \
+  -e DASHSCOPE_API_KEY="sk-..." \
+  -e DATA_PATH="/app/data/产品1.txt" \
+  -e HF_HUB_OFFLINE=1 \
+  -v /opt/rag-app/data:/app/data \
+  -v /opt/rag-app/chroma_db1:/app/chroma_db1 \
+  -v /opt/rag-app/.cache/huggingface:/app/.cache/huggingface \
+  my-rag-app
+
+## Nginx 反代
+/etc/nginx/conf.d/rag-app.conf：
+server {
+    listen 80;
+    server_name _;
+    client_max_body_size 20m;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_http_version 1.1;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 300s;
+        proxy_send_timeout 300s;
+    }
+}
+## 运维命令
+
+docker logs rag-app | tail -30     # 看最近日志
+docker restart rag-app             # 重启
+nginx -t && systemctl reload nginx # 重载 Nginx
+
+## 目录结构
+text
+.
+├── main.py                 # FastAPI 服务
+├── rag_engine.py           # RAG 核心引擎
+├── static/index.html       # 前端页面
+├── data/产品1.txt           # 知识库
+├── evaluation/eval.py      # 评测脚本
+├── deploy/                 # 部署配置
+├── screenshots/            # 运行截图
+└── Dockerfile
+
+

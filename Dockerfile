@@ -4,7 +4,6 @@ FROM python:3.11-slim
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
-    # 让 HuggingFace 模型缓存固定在一个目录，方便挂载/复用
     HF_HOME=/app/.cache/huggingface
 
 WORKDIR /app
@@ -13,7 +12,7 @@ WORKDIR /app
 RUN sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list.d/debian.sources 2>/dev/null || true \
     && sed -i 's|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list 2>/dev/null || true
 
-# 原来的安装命令
+# 安装系统依赖
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         libgomp1 \
@@ -25,8 +24,12 @@ COPY requirements.txt .
 RUN pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install "numpy<2" -i https://pypi.tuna.tsinghua.edu.cn/simple
-# 再拷贝代码
+
+# 拷贝代码
 COPY . .
+
+# 确保 uploads 目录存在
+RUN mkdir -p /app/uploads
 
 EXPOSE 8000
 
