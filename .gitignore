@@ -1,20 +1,6 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-venv/
-.venv/
-
-# Environment
 .env
-.env.*
-!.env.example
-
-# Database and logs
+.venv/
+__pycache__/
+*.pyc
 orders.db
-*.log
-
-# OS/editor
-.DS_Store
-Thumbs.db
+agent_transfer.log
